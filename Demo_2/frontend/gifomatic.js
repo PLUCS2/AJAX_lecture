@@ -1,22 +1,20 @@
-const appendGif = gifUrl => {
-  $(".gif-display").empty();
-  $(".gif-display").append($(`<img class="gif" src=${gifUrl} />`));
-};
-
-// const postMessage = message => {
-//   $('.messages').text(message);
-// };
+//CODE FROM DEMO 1
 
 const newGifAJAX = queryString => {
   return $.ajax({
     method: 'GET',
     url: `https://api.giphy.com/v1/gifs/random?tag=${queryString}&api_key=9IfxO6R6fpEZMAdqdw66QUgQdPejVIAW&rating=G`,
-    success: gif => {
-      debugger; 
-      appendGif(gif.data.image_url)}
   });
 };
 
+const appendGif = gifUrl => {
+  $(".gif-display").empty();
+  $(".gif-display").append($(`<img class="gif" src=${gifUrl} />`));
+};
+
+//TO BE WRITTEN AJAX REQUESTS
+
+//EVENT HANDLERS
 const setEventHandlers = () => {
   $('#new-gif-form').on('submit', e => {
     e.preventDefault();
@@ -37,6 +35,7 @@ const setEventHandlers = () => {
   //   e.preventDefault();
   //   callbackHell();
   // })
+
   // $(".clear").on("click", () => {
   //   $(".gif-display").empty();
   //   $(".messages").empty();
@@ -53,7 +52,7 @@ const fetchNewGif = () => {
   const $input = $('#new-gif-query');
   const queryString = $input.val();
   $input.val('');
-  newGifAJAX(queryString); 
+
   // TODO: Initiate AJAX call to GIPHY API, take response and put on the DOM
 };
 
@@ -68,7 +67,11 @@ const fetchNewGif = () => {
 //
 //   // TODO: Initiate AJAX request to Rails backend, give a message if successful
 // };
-//
+
+// const postMessage = message => {
+//   $('.messages').text(message);
+// };
+
 // const fetchSavedGif = () => {
 //   const $input = $("#old-gif-query");
 //   const title = $input.val();
@@ -83,16 +86,19 @@ const fetchNewGif = () => {
 //   const $input = $('#callback-hell-query');
 //   const title = $input.val();
 //   $input.val('');
+//      debugger; 
 //   return $.ajax({
 //     method: 'GET',
 //     url: `/gifs/${title}`,
 //     dataType: 'json',
 //     success: gif => {
 //       // gif exists in DB
+//          debugger; 
 //       appendGif(gif.url);
 //     },
 //     error: response => {
 //       // gif doesn't exist
+//            debugger; 
 //       postMessage(`${response.responseJSON[0]} Fetching new gif...`);
 //       return $.ajax({
 //         method: 'GET',
@@ -103,6 +109,7 @@ const fetchNewGif = () => {
 //           const url = gif.data.image_url;
 //           appendGif(url);
 //           gif = { title: title, url: url };
+//                debugger; 
 //           return $.ajax({
 //             // save gif to db
 //             method: 'POST',
@@ -111,6 +118,7 @@ const fetchNewGif = () => {
 //               gif: gif,
 //             },
 //             success: savedGif => {
+//                   debugger; 
 //               postMessage('Successfully saved!');
 //             },
 //           });
